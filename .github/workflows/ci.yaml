@@ -1,9 +1,8 @@
 name: ci-sonnarcloud
 on:
-  pull-requests:
-    branges:
-      -develop
-
+  pull-request:
+    branches:
+      - develop
 jobs:
   run-ci:
     runs-on: ubuntu-lastest
