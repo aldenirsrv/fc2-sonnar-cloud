@@ -2,8 +2,7 @@ name: ci-sonnarcloud
 on:
   pull-request:
     branches:
-      -develop
-
+      - develop
 jobs:
   run-ci:
     runs-on: ubuntu-lastest
