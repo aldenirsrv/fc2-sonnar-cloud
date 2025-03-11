@@ -1,0 +1,6 @@
+projectKey=fullcycle-sonnar
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=fullcycle-sonnar
+ceTaskId=ce37b492-f30d-4be4-8c4e-5be45f6c4ca5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ce37b492-f30d-4be4-8c4e-5be45f6c4ca5
