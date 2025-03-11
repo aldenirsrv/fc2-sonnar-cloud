@@ -6,7 +6,7 @@ on:
 jobs:
   run-ci:
     runs-on: ubuntu-lastest
-    steops:
+    steps:
       - users: actions/checkout@v2
       - users: actions/setup-go@v2
         with:
