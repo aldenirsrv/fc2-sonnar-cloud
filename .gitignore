@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 .scannerwork
 coverage.out
+=======
+**/mysql
+**/postgres
+>>>>>>> b653557 (feat(git-compose): Sonar with database)

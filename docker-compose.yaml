@@ -1,0 +1,45 @@
+services:
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    # entrypoint: dockerize -wait tcp://db:3306 -timeout 60s docker-entrypoint.sh
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONARQUBE_JDBC_URL=jdbc:mysql://db:3306/sonarqube?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SONARQUBE_JDBC_USERNAME=root
+      - SONARQUBE_JDBC_PASSWORD=root
+    ports:
+      - "9000:9000"
+    networks:
+      - sonar-network
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    restart: always
+    depends_on:
+      - db-sonar  # Wait for DB to be available
+  
+  db-sonar:
+    image: mysql:5.7
+    platform: linux/amd64 
+    command: --innodb-use-native-aio=0
+    container_name: db-sonar
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=sonarqube
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - sonar-network
+
+networks:
+  sonar-network:  # Defined the missing network here
+    driver: bridge
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
